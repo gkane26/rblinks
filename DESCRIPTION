@@ -1,0 +1,17 @@
+Package: rblinks
+Type: Package
+Title: Bernoulli Blinks Task Preprocessing & Analysis
+Version: 1.0
+Author: Gary Kane
+Maintainer: Gary Kane <gkane@alumni.princeton.edu>
+Description: Functions to import Med Associated operant chamber raw data from Bernoulli Blinks task into R data frame.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends:
+    data.table
+Imports:
+    rmedpc
+Remotes:
+    gkane26/rmedpc
+RoxygenNote: 6.1.1
