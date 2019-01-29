@@ -40,7 +40,7 @@ To see additional options or for further details, see documentation. For example
 
 At the moment, this package does not implement any further statistical analysis. Since the package uses data.table, further analysis is easy and convenient to do. After loading a data table containing data from multiple groups of subjects and multiple experimental conditions, accuracy and reaction time can be found:
 ```
-blinks_data = rblinks::load_blinks_data(file= vector_of_data_files)
+blinks_data = rblinks::load_blinks_data(file=vector_of_data_files)
 accuracy_data = blinks_data[, accuracy := mean(correctChoice), .(subject, group, condition, pCorrectBlink)]
 rt_data = blinks_data[, RT := mean(RT), .(subject, group, condition, pCorrectBlink)]
 ```
@@ -56,4 +56,5 @@ accuracy_plot = ggplot(accuracy_data, aes(x=pCorrectBlink, y=accuracy, color=con
     stat_summary(fun.y=mean, geom="line") +
     stat_summary(fun.data=mean_se, geom="errorbar", width=.03) +
     theme_classic()
+accuracy_plot
 ```
