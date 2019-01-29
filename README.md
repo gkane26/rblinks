@@ -38,7 +38,7 @@ To see additional options or for further details, see documentation. For example
 
 ### Further Analysis
 
-At the moment, this package does not implement any further statistical analysis. Since the package uses data.table, further analysis is easy and convenient to do. After loading a data table containing data from multiple groups of subjects and multiple experimental conditions, accuracy and reaction time can be found:
+At the moment, this package does not implement any further statistical analysis. Since the package uses data.table, further analysis is easy and convenient to do (see [Introduction to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)). After loading a data table containing data from multiple groups of subjects and multiple experimental conditions, accuracy and reaction time can be found:
 ```
 blinks_data = rblinks::load_blinks_data(file=vector_of_data_files)
 accuracy_data = blinks_data[, accuracy := mean(correctChoice), .(subject, group, condition, pCorrectBlink)]
