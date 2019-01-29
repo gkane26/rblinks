@@ -36,3 +36,24 @@ blinks_dat = load_blinks_data(c(save_file_name, save_file_name))
 
 To see additional options or for further details, see documentation. For example: ``?med_to_dt``
 
+### Further Analysis
+
+At the moment, this package does not implement any further statistical analysis. Since the package uses data.table, further analysis is easy and convenient to do. After loading a data table containing data from multiple groups of subjects and multiple experimental conditions, accuracy and reaction time can be found:
+```
+blinks_data = rblinks::load_blinks_data(file= vector_of_data_files)
+accuracy_data = blinks_data[, accuracy := mean(correctChoice), .(subject, group, condition, pCorrectBlink)]
+rt_data = blinks_data[, RT := mean(RT), .(subject, group, condition, pCorrectBlink)]
+```
+
+These variables can be easily plotted using ggplot2:
+```
+library(ggplot2)
+library(Hmisc)
+
+accuracy_plot = ggplot(accuracy_data, aes(x=pCorrectBlink, y=accuracy, color=condition)) +
+    facet_wrap(~group)
+    stat_summary(fun,y=mean, geom="point", size=2) +
+    stat_summary(fun.y=mean, geom="line") +
+    stat_summary(fun.data=mean_se, geom="errorbar", width=.03) +
+    theme_classic()
+```
